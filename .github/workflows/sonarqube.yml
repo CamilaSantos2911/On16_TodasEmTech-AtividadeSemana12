@@ -1,16 +1,25 @@
-name: Build
+name: SonarCloud analysis
+
 on:
   push:
-    branches:
-      - master # or the name of your main branch
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
 jobs:
-  build:
-    name: Build
+  Analysis:
     runs-on: ubuntu-latest
-    steps:
     
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
+    steps:
+      - name: Analyze with SonarCloud         
+
+        # You can pin the exact commit or the version.
+        # uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
+        uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
