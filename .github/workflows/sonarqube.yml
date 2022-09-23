@@ -21,6 +21,10 @@ jobs:
     - name: SonarQube Scan
       uses: kitabisa/sonarqube-action@master
       with:
+       args: -X
+         -Dsonar.organization=camila2911
+         -Dsonar.projectKey=sonar_test
+      env: 
         host: ${{ secrets.SONARQUBE_HOST }}
         login: ${{ secrets.SONARQUBE_TOKEN }}
         projectKey: "sonar_test"
