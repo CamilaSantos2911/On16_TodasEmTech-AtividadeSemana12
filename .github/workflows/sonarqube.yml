@@ -9,13 +9,10 @@ jobs:
       uses: actions/checkout@master
      
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      with:
-       args: -X
-         -Dsonar.organization=camila2911
-         -Dsonar.projectKey=sonar_test
+      uses: sonarsource/sonarqube-quality-gate-action@master       
       env: 
         GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
        
