@@ -10,9 +10,9 @@ jobs:
      
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master      
-      with: 
-        GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
+      env:
+         GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+         PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
        
