@@ -1,5 +1,5 @@
 name: SonarQube Scan
-on:[push]
+on: [push]
 
 jobs:
   test:
