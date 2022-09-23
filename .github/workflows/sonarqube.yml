@@ -3,8 +3,8 @@ on: [push]
 
 jobs:
   test:
-  runs-on: ubuntu-latest
-    steps:
+   runs-on: ubuntu-latest
+   steps:
     - name: Checking out
       uses: actions/checkout@master
      
