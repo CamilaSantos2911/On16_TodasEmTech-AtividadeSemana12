@@ -13,5 +13,5 @@ jobs:
            -Dsonar.organization=camilasantos2911
            -Dsonar.projectKey=sonar_test
            -Dsonar.sources=$GITHUB_WORKSPACE 
-           -Dsonar.host.url=http://179.232.143.216:9000 
+           -Dsonar.host.url=http://localhost:9000/ 
            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
