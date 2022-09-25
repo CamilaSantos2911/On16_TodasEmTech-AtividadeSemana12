@@ -1,22 +1,26 @@
-name: SonarQube Scan
-on: [push]
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  test:
-   runs-on: ubuntu-latest
-   steps:
-    - name: Checking out
-      uses: actions/checkout@master
-      
-  
-    - name: Setup sonarqube
-      uses: warchant/setup-sonar-scanner@v3  
-     
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master      
-      env:
-         GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
-         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-         PROJECT_KEY: ${{ secrets.PROJECT_KEY }}
-       
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup sonarqube
+        uses: ./
+      - name: run sonarqube
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: sonar-scanner
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.organization=camila2911
+          -Dsonar.host.url=http://localhost:9000
+          -Dsonar.projectKey=sonar_test
