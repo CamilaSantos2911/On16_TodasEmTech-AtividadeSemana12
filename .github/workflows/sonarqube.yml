@@ -7,6 +7,10 @@ jobs:
    steps:
     - name: Checking out
       uses: actions/checkout@master
+      
+  
+    - name: Setup sonarqube
+      uses: warchant/setup-sonar-scanner@v3  
      
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master      
